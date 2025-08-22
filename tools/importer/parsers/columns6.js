@@ -1,35 +1,35 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Find the nav inside the main container
+  // Find the navigation (contains the columns)
   const nav = element.querySelector('nav');
   if (!nav) return;
 
-  // Get all immediate index groups (columns)
-  const groups = nav.querySelectorAll(':scope > div.Index_indexGroup__NLNA6');
+  // Find all .Index_indexGroup__NLNA6 (column containers)
+  const groups = Array.from(nav.querySelectorAll(':scope > div.Index_indexGroup__NLNA6'));
+  // For each group, create a <div> with their header and list
+  const columns = groups.map(group => {
+    // Create an empty div that will contain content of this column
+    const colDiv = document.createElement('div');
+    // Grab the heading, but only if it has text content
+    const h3 = group.querySelector('h3');
+    if (h3 && h3.textContent && h3.textContent.trim().length > 0) {
+      colDiv.appendChild(h3);
+    }
+    // Grab the ul (if it has any li children)
+    const ul = group.querySelector('ul');
+    if (ul && ul.children.length > 0) {
+      colDiv.appendChild(ul);
+    }
+    // Only include if non-empty
+    return colDiv.childNodes.length ? colDiv : null;
+  }).filter(Boolean); // Remove empty columns
 
-  // Only keep non-empty groups (with a header or at least one <li>)
-  const nonEmptyGroups = Array.from(groups).filter(group => {
-    const header = group.querySelector('h3');
-    const list = group.querySelector('ul');
-    const hasHeader = header && header.textContent.trim().length > 0;
-    const hasListItems = list && list.children.length > 0;
-    return hasHeader || hasListItems;
-  });
-
-  // For each group, create a column cell
-  // Each cell should reference existing group element from the document, not a clone
-  const cells = nonEmptyGroups.map(group => group);
-
-  // Only build the table if we have at least one group
-  if (cells.length === 0) return;
-
-  // Table header must match spec exactly
-  const headerRow = ['Columns (columns6)'];
-  const blockTable = WebImporter.DOMUtils.createTable([
-    headerRow,
-    cells
-  ], document);
-
-  // Replace original element with the new block table
-  element.replaceWith(blockTable);
+  // Only build a columns block if there is at least one non-empty column
+  if (columns.length) {
+    const table = WebImporter.DOMUtils.createTable([
+      ['Columns (columns6)'],
+      columns
+    ], document);
+    element.replaceWith(table);
+  }
 }

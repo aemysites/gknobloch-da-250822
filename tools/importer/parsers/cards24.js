@@ -1,69 +1,49 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Table header, exact as required
+  // Step 1: Find the UL containing card LIs
+  const ul = element.querySelector('ul');
+  if (!ul) return;
+
+  // Step 2: Prepare header row matching block name exactly
   const headerRow = ['Cards (cards24)'];
-  const cells = [headerRow];
 
-  // The cards are list items inside the UL
-  const list = element.querySelector('ul');
-  if (!list) return;
-  const items = Array.from(list.children);
-
-  items.forEach(card => {
-    // --- IMAGE CELL ---
+  // Step 3: Build each card row
+  const rows = [];
+  const lis = Array.from(ul.children);
+  lis.forEach(li => {
+    // Card image/icon in first cell
     let imgCell = null;
-    const figure = card.querySelector('.FeatureCard_backgroundImage__fdw48 figure');
+    const figure = li.querySelector('figure');
     if (figure) {
-      // Prefer the <img> inside <picture> for alt text and correct image
+      // Prefer img inside figure
       const img = figure.querySelector('img');
-      if (img) {
-        imgCell = img;
-      } else {
-        // If no img, use the whole figure element for maximum compatibility
-        imgCell = figure;
-      }
+      imgCell = img ? img : figure;
     }
 
-    // --- TEXT CELL ---
-    // Combine all content textually and semantically as in the example
-    const contentEls = [];
-    // Try to get topic/heading
-    let topic = card.querySelector('.FeatureCard_topicLabel__dwo6T');
-    if (topic && topic.textContent.trim()) {
-      // Render heading as a <strong> for semantic meaning (example uses bold)
-      const title = document.createElement('strong');
-      title.textContent = topic.textContent.trim();
-      contentEls.push(title);
+    // Card text in second cell: title, description, CTA
+    const textCell = [];
+    // Title (usually h3)
+    const h3 = li.querySelector('h3');
+    if (h3) textCell.push(h3);
+    // Description (usually p)
+    const p = li.querySelector('p');
+    if (p) textCell.push(p);
+    // Handle extra text: p siblings after headline
+    let nextEl = p ? p.nextElementSibling : null;
+    while (nextEl && nextEl.tagName === 'P') {
+      textCell.push(nextEl);
+      nextEl = nextEl.nextElementSibling;
     }
-    // Try headline/description
-    let desc = card.querySelector('.FeatureCard_headline__VE1MS, .typography_headline__zZkHA');
-    if (desc && desc.textContent.trim()) {
-      const descPara = document.createElement('p');
-      descPara.textContent = desc.textContent.trim();
-      contentEls.push(descPara);
-    }
-    // If there are extra paragraphs, include them
-    // (Not present in sample HTML, but support for future)
-    // Try to find a CTA link with aria-label (never clone; reference only)
-    let cta = card.querySelector('a.cards_cardLink__W1UKy');
-    if (cta && cta.getAttribute('aria-label')) {
-      // Reference the link directly from the document
-      contentEls.push(cta);
-    }
-    // Defensive: If all above fail, add any meaningful text
-    if (contentEls.length === 0) {
-      // Get all text from this card
-      const rawText = card.textContent.trim();
-      if (rawText) {
-        contentEls.push(document.createTextNode(rawText));
-      }
-    }
+    // Call-to-action (a[role=button])
+    const cta = li.querySelector('a[role="button"]');
+    if (cta) textCell.push(cta);
 
-    // Add the row, referencing actual elements from the original document
-    cells.push([imgCell, contentEls]);
+    rows.push([imgCell, textCell]);
   });
 
-  // Build and replace
-  const table = WebImporter.DOMUtils.createTable(cells, document);
+  // Step 4: Create block table
+  const table = WebImporter.DOMUtils.createTable([headerRow, ...rows], document);
+
+  // Step 5: Replace original element
   element.replaceWith(table);
 }

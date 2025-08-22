@@ -1,73 +1,49 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Get <ul> containing the cards
+  // Only process if we find the <ul> with card items
   const ul = element.querySelector('ul');
   if (!ul) return;
 
-  // Header row per instructions
-  const rows = [['Cards (cards3)']];
+  // Table header must match the block name/variant exactly
+  const headerRow = ['Cards (cards3)'];
+  const tableRows = [headerRow];
 
-  // Each <li> is a card
-  Array.from(ul.children).forEach((li) => {
-    // Find image: <img> inside <figure> (not a link)
-    let imgEl = null;
-    const bgDiv = li.querySelector('.FeatureCard_backgroundImage__fdw48');
-    if (bgDiv) {
-      const figure = bgDiv.querySelector('figure');
-      if (figure) {
-        const img = figure.querySelector('img');
-        if (img) imgEl = img;
-      }
+  // For each LI (card)
+  ul.querySelectorAll(':scope > li').forEach((li) => {
+    // IMAGE: Find the figure > img (or fallback to figure or picture)
+    let imgCell = null;
+    const bgImg = li.querySelector('.FeatureCard_backgroundImage__fdw48 figure');
+    if (bgImg) {
+      const img = bgImg.querySelector('img');
+      imgCell = img ? img : bgImg;
+    } else {
+      // fallback: any <img>
+      const img = li.querySelector('img');
+      imgCell = img || null;
     }
 
-    // Card text: get <h3> and <p>
-    const textContent = document.createElement('div');
+    // TEXT: Strong heading (from h3), description (from p)
+    const textCell = [];
     const h3 = li.querySelector('h3');
     if (h3) {
-      // Use heading as <strong>
+      // Use <strong> for heading/title
       const strong = document.createElement('strong');
       strong.textContent = h3.textContent.trim();
-      textContent.appendChild(strong);
+      textCell.push(strong);
     }
     const p = li.querySelector('p');
     if (p) {
-      // If h3 exists, put a <br> after it
-      if (textContent.childNodes.length) {
-        textContent.appendChild(document.createElement('br'));
-      }
-      // Copy p contents, preserving <br>
-      p.childNodes.forEach((node) => {
-        if (node.nodeType === Node.TEXT_NODE) {
-          textContent.appendChild(document.createTextNode(node.textContent));
-        } else if (node.nodeName === 'BR') {
-          textContent.appendChild(document.createElement('br'));
-        } else {
-          textContent.appendChild(node);
-        }
-      });
+      // Insert a <br> if there's a heading above
+      if (textCell.length > 0) textCell.push(document.createElement('br'));
+      textCell.push(p);
     }
-    // Find CTA link with visible text
-    let cta = null;
-    Array.from(li.querySelectorAll('a')).forEach((a) => {
-      if (a.textContent && a.textContent.trim()) {
-        cta = a;
-      }
-    });
-    if (cta) {
-      // Add a <br> before CTA if text exists
-      if (textContent.childNodes.length) {
-        textContent.appendChild(document.createElement('br'));
-      }
-      textContent.appendChild(cta);
-    }
+    // The example does not show visible CTA/link text: skip the card <a> button
 
-    // Only add row if image and text are present
-    if (imgEl && textContent.childNodes.length) {
-      rows.push([imgEl, textContent]);
-    }
+    // Add row: [image/html element, text content (array)]
+    tableRows.push([imgCell, textCell]);
   });
 
-  // Build the block table using referenced nodes
-  const block = WebImporter.DOMUtils.createTable(rows, document);
-  element.replaceWith(block);
+  // Build and replace
+  const table = WebImporter.DOMUtils.createTable(tableRows, document);
+  element.replaceWith(table);
 }

@@ -1,28 +1,41 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // The block header row should be a single cell (one column)
-  const headerRow = ['Columns (columns1)'];
-
-  // Find nav element inside the block
-  const nav = Array.from(element.children).find(e => e.tagName.toLowerCase() === 'nav');
+  // Find the nav inside the container (the direct child)
+  const nav = element.querySelector('nav');
   if (!nav) return;
 
-  // Find all column group divs inside nav
-  const columnGroups = Array.from(nav.children).filter(e => e.tagName.toLowerCase() === 'div');
-  if (!columnGroups.length) return;
+  // Get all group divs directly under nav
+  const groupDivs = Array.from(nav.querySelectorAll(':scope > div'));
+  if (groupDivs.length === 0) return;
 
-  // For each column group, collect all direct children (h3 and ul)
-  const columnCells = columnGroups.map(group => {
-    const children = Array.from(group.children)
-      .filter(e => ['h3', 'ul'].includes(e.tagName.toLowerCase()));
-    // If both present, return as array, otherwise the only element
-    return children.length === 1 ? children[0] : children;
+  // For each group, collect the heading and the list as a cell
+  const columns = groupDivs.map((group) => {
+    const colContent = [];
+    const header = group.querySelector('h3');
+    const list = group.querySelector('ul');
+    if (header) colContent.push(header);
+    if (list) colContent.push(list);
+    if (colContent.length === 1) {
+      return colContent[0];
+    } else if (colContent.length > 1) {
+      return colContent;
+    } else {
+      // fallback: include all children if empty
+      return Array.from(group.children);
+    }
   });
 
-  // Compose the table with header row (single cell), then a row with column cells
-  const tableRows = [headerRow, columnCells];
-  const blockTable = WebImporter.DOMUtils.createTable(tableRows, document);
+  // Header row: exactly one cell as per the spec
+  const headerRow = ['Columns (columns1)'];
+  // Second row: one cell per column
+  const columnsRow = columns;
 
-  // Replace the original element
-  element.replaceWith(blockTable);
+  // Build table
+  const block = WebImporter.DOMUtils.createTable([
+    headerRow,
+    columnsRow
+  ], document);
+
+  // Replace the element
+  element.replaceWith(block);
 }

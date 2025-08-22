@@ -1,43 +1,29 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // The block name for the table header exactly as in the requirements
+  // The header row must be a single cell
   const headerRow = ['Columns (columns5)'];
 
-  // Extract left and right column content
-  // Left: the h1 title
-  const titleEl = element.querySelector('h1');
-  // Right: the description, which is usually under .PageHeader_description__pXv2d
-  let descriptionEl = null;
-  const descWrap = element.querySelector('.PageHeader_description__pXv2d');
-  if (descWrap) {
-    // Prefer the <p> if present for correct semantic meaning
-    descriptionEl = descWrap.querySelector('p') || descWrap;
-  } else {
-    // Fallback: find first <p> in element
-    descriptionEl = element.querySelector('p');
-  }
+  // Columns: title and description (side by side)
+  // Find the immediate children of the top element
+  const children = Array.from(element.children);
+  // Typically h1 and a div with description
+  let titleElem = null;
+  let descElem = null;
+  children.forEach(child => {
+    if (child.tagName.toLowerCase() === 'h1') {
+      titleElem = child;
+    } else if (child.classList.contains('PageHeader_description__pXv2d')) {
+      descElem = child.querySelector('p');
+    }
+  });
 
-  // If nothing found, use empty element to maintain two columns
-  if (!titleEl) {
-    const emptyDiv = document.createElement('div');
-    titleEl = emptyDiv;
-  }
-  if (!descriptionEl) {
-    const emptyDiv = document.createElement('div');
-    descriptionEl = emptyDiv;
-  }
+  // Compose the content row: two columns for side-by-side layout (as in screenshot)
+  const contentRow = [titleElem || '', descElem || ''];
 
-  // Second row contains both columns
-  const secondRow = [ titleEl, descriptionEl ];
+  // Cells array: header row (1 column), content row (as many columns as needed)
+  const cells = [headerRow, contentRow];
 
-  // No Section Metadata table in example, so don't create one
-
-  // Create the block table using the helper
-  const blockTable = WebImporter.DOMUtils.createTable([
-    headerRow,
-    secondRow
-  ], document);
-
-  // Replace original element with new table block
-  element.replaceWith(blockTable);
+  // Create table and replace
+  const table = WebImporter.DOMUtils.createTable(cells, document);
+  element.replaceWith(table);
 }

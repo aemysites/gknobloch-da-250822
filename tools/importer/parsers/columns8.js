@@ -1,41 +1,31 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // 1. Prepare the header row
-  const headerRow = ['Columns (columns8)'];
-
-  // 2. Gather all top-level columns. Each column is a <div class="ac-gf-directory-column">
-  const columns = Array.from(element.querySelectorAll(':scope > .ac-gf-directory-column'));
-
-  let cellsRow = [];
-  if (columns.length > 0) {
-    // For each column, group all its .ac-gf-directory-column-section children together as a cell
-    cellsRow = columns.map(col => {
-      // Get all direct .ac-gf-directory-column-section children
-      const sections = Array.from(col.querySelectorAll(':scope > .ac-gf-directory-column-section'));
-      if (sections.length === 1) {
-        // Single section, reference the element directly
-        return sections[0];
-      } else if (sections.length > 1) {
-        // Multiple sections, reference them as an array
-        return sections;
-      } else {
-        // Edge case: no sections, use column itself
-        return col;
-      }
-    });
-  } else {
-    // Fallback in case there are no columns (unexpected in provided HTML)
-    // We'll treat all .ac-gf-directory-column-section as columns
-    const sections = Array.from(element.querySelectorAll(':scope > .ac-gf-directory-column-section'));
-    cellsRow = sections.length ? sections : [element];
+  // Helper to get all column sections within a .ac-gf-directory-column
+  function getColumnSections(col) {
+    // Only immediate children that are .ac-gf-directory-column-section
+    return Array.from(col.querySelectorAll(':scope > .ac-gf-directory-column-section'));
   }
-
-  // 3. Build the table cells structure
-  const cells = [headerRow, cellsRow];
-
-  // 4. Create the block table using the required helper
-  const block = WebImporter.DOMUtils.createTable(cells, document);
-
-  // 5. Replace the original element with the block table
-  element.replaceWith(block);
+  // Get all columns in the directory
+  const columns = Array.from(element.querySelectorAll(':scope > .ac-gf-directory-column'));
+  // For each column, group its sections vertically into a single cell
+  const columnCells = columns.map((col) => {
+    const sections = getColumnSections(col);
+    if (sections.length === 1) {
+      // If there's only one section, use it directly
+      return sections[0];
+    } else {
+      // If multiple, wrap in a div for vertical stack
+      const div = document.createElement('div');
+      sections.forEach((sec) => div.appendChild(sec));
+      return div;
+    }
+  });
+  // Compose the columns table
+  const headerRow = ['Columns (columns8)'];
+  const cells = [
+    headerRow,
+    columnCells
+  ];
+  const table = WebImporter.DOMUtils.createTable(cells, document);
+  element.replaceWith(table);
 }

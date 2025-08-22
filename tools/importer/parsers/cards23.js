@@ -1,53 +1,60 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
+  // Cards (cards23) table, header row must match example
   const headerRow = ['Cards (cards23)'];
-  const rows = [];
+  const rows = [headerRow];
 
-  // Find all immediate card <li>s
-  const cardEls = element.querySelectorAll('ul > li');
-  cardEls.forEach(card => {
-    // First column: the image/icon
-    const img = card.querySelector('img');
+  // Find all cards (li elements)
+  const ul = element.querySelector('ul');
+  if (!ul) return;
+  const liList = Array.from(ul.children);
 
-    // Second column: text content
-    const textParts = [];
-    // Title (h3)
-    const headline = card.querySelector('h3');
-    if (headline) textParts.push(headline);
+  liList.forEach(li => {
+    // First column: image/icon element if present
+    let img = li.querySelector('img') || '';
+
+    // Second column: text stack (heading, desc, cta)
+    const textCol = [];
+    // Heading (h3)
+    let heading = li.querySelector('.IconCard_headline__0cXta');
+    if (heading) textCol.push(heading);
     // Description (p)
-    const desc = card.querySelector('p');
-    if (desc) textParts.push(desc);
-    // CTA (a or button)
-    const linkEl = card.querySelector('a.cards_cardLink__W1UKy, button.cards_cardLink__W1UKy');
-    if (linkEl) {
-      let ctaText = '';
-      // Prefer visually hidden span as label
-      const vhSpan = linkEl.querySelector('.utilities_visuallyhidden__5vJWI');
-      if (vhSpan && vhSpan.textContent.trim()) {
-        ctaText = vhSpan.textContent.trim();
-      } else if (linkEl.getAttribute('aria-label')) {
-        ctaText = linkEl.getAttribute('aria-label');
+    let desc = li.querySelector('.IconCard_bodyCopy__AxRxx');
+    if (desc) textCol.push(desc);
+    // CTA: a.cards_cardLink__W1UKy or button.cards_cardLink__W1UKy
+    const ctaLink = li.querySelector('a.cards_cardLink__W1UKy');
+    if (ctaLink) {
+      // Reference the existing <a>, but clean up to keep only the visually hidden text or aria-label
+      // Remove inner icons (SVGs etc)
+      const icons = ctaLink.querySelectorAll('[aria-hidden], svg');
+      icons.forEach(node => node.remove());
+      // If visuallyhidden span exists, use its textContent as link text
+      const vh = ctaLink.querySelector('.utilities_visuallyhidden__5vJWI');
+      if (vh) {
+        ctaLink.textContent = vh.textContent;
+      } else if (ctaLink.getAttribute('aria-label')) {
+        ctaLink.textContent = ctaLink.getAttribute('aria-label');
       } else {
-        ctaText = linkEl.textContent.trim();
+        // fallback: whatever is left
+        ctaLink.textContent = ctaLink.textContent;
       }
-      // For <a> use anchor, for <button> use <span>
-      if (linkEl.tagName.toLowerCase() === 'a') {
-        const a = document.createElement('a');
-        a.href = linkEl.href;
-        a.textContent = ctaText || linkEl.textContent.trim();
-        textParts.push(a);
-      } else {
-        // <button> is not a true link: just text
+      textCol.push(ctaLink);
+    } else {
+      // If button, use aria-label as text only (for modal CTAs)
+      const ctaBtn = li.querySelector('button.cards_cardLink__W1UKy');
+      if (ctaBtn && ctaBtn.getAttribute('aria-label')) {
         const span = document.createElement('span');
-        span.textContent = ctaText || linkEl.textContent.trim();
-        textParts.push(span);
+        span.textContent = ctaBtn.getAttribute('aria-label');
+        textCol.push(span);
       }
     }
-    rows.push([img, textParts]);
+    // The cells array for the current card
+    rows.push([
+      img,
+      textCol.length === 1 ? textCol[0] : textCol
+    ]);
   });
 
-  // Compose the table
-  const cells = [headerRow, ...rows];
-  const table = WebImporter.DOMUtils.createTable(cells, document);
+  const table = WebImporter.DOMUtils.createTable(rows, document);
   element.replaceWith(table);
 }

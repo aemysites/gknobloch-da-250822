@@ -1,29 +1,39 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Find the content container (which contains the image)
+  // Table header as specified
+  const headerRow = ['Hero'];
+
+  // Find the background image asset (figure containing the image)
+  let backgroundAsset = null;
   const contentContainer = element.querySelector('.FeatureVideo_contentContainer__n_ErD');
-  let imageEl = null;
   if (contentContainer) {
-    const figure = contentContainer.querySelector('figure');
-    if (figure) {
-      const picture = figure.querySelector('picture');
-      if (picture) {
-        // Use the <img> inside <picture>
-        imageEl = picture.querySelector('img');
+    // Prefer figure with image
+    const figures = contentContainer.getElementsByTagName('figure');
+    if (figures.length > 0) {
+      backgroundAsset = figures[0]; // Reference the DOM element directly
+    }
+    // If figure not found (shouldn't happen with provided HTML), fallback to video
+    if (!backgroundAsset) {
+      const videos = contentContainer.getElementsByTagName('video');
+      if (videos.length > 0) {
+        backgroundAsset = videos[0];
       }
     }
   }
-  // Compose the table as specified: 3 rows, 1 column
-  // 1st row: block name
-  // 2nd row: background image (img element if found, otherwise empty string)
-  // 3rd row: headline/subhead/cta (none present in provided HTML examples)
+  // If no asset found, provide empty string
+  const secondRow = [backgroundAsset || ''];
+
+  // Third row is empty string since all provided HTML lacks heading, subheading, or CTA
+  const thirdRow = [''];
+
+  // Assemble the table cells as rows
   const cells = [
-    ['Hero'],
-    [imageEl || ''],
-    [''],
+    headerRow,
+    secondRow,
+    thirdRow
   ];
-  // Create the table
-  const table = WebImporter.DOMUtils.createTable(cells, document);
-  // Replace the original element
-  element.replaceWith(table);
+
+  // Create the block table and replace the original element
+  const block = WebImporter.DOMUtils.createTable(cells, document);
+  element.replaceWith(block);
 }

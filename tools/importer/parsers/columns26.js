@@ -1,50 +1,32 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Find all columns in the gallery (each product)
-  const columns = Array.from(element.querySelectorAll('.StickyFooterGallery_galleryItem__ZGmEN'));
+  // The header row is always the block name
+  const headerRow = ['Columns (columns26)'];
+
+  // Defensive: Find the main gallery UL (columns)
+  const gallery = element.querySelector('ul.StickyFooterGallery_itemContainer__Iir9v');
+  if (!gallery) return;
+
+  // Each LI in the gallery is a column
+  const columns = Array.from(gallery.querySelectorAll(':scope > li'));
   if (!columns.length) return;
 
-  // Table header as a single cell, matching example
-  const tableCells = [['Columns (columns26)']];
-
-  // Compose the first row: product block for each column
-  const firstRow = columns.map(col => {
-    // To capture all text and visuals, grab the main product tile content
-    const productTile = col.querySelector('.ProductTile_productTile__P1DTD');
-    // Add links below the product tile if present (these are outside the tile in some structures)
-    const productLinksFooter = col.querySelector('.ProductTileLinks_tileFooter__y7zXD');
-    if (productTile && productLinksFooter) {
-      return [productTile, productLinksFooter];
-    }
-    // If only one found, just use it
-    if (productTile) return productTile;
-    if (productLinksFooter) return productLinksFooter;
-    // Fallback: use all children
-    return Array.from(col.children);
-  });
-  tableCells.push(firstRow);
-
-  // For feature comparison rows, find the max number for all columns
-  let maxFeatures = 0;
-  const featureRowsByCol = columns.map(col => {
-    // Select all rows inside .ToutTableItem_column__qmPtw and null blocks
-    const features = Array.from(col.querySelectorAll('.ToutTableItem_column__qmPtw > div, .ToutTableItem_nullContainer__1QM3q'));
-    if (features.length > maxFeatures) maxFeatures = features.length;
-    return features;
+  // For each column, gather its primary content and spec/features
+  const cells = columns.map(col => {
+    // Product Tile (image, title, description, links)
+    const tile = col.querySelector('.ProductTile_productTile__P1DTD');
+    // Features/specs are just after the tile, in ToutTableItem_column__qmPtw
+    // (sometimes there can be multiple, but for this block there's only one per col)
+    const specs = col.querySelector('.ToutTableItem_column__qmPtw');
+    // Compose a wrapper div with everything for this column
+    const wrapper = document.createElement('div');
+    if (tile) wrapper.appendChild(tile);
+    if (specs) wrapper.appendChild(specs);
+    return wrapper;
   });
 
-  // Now build each feature comparison row
-  for (let i = 0; i < maxFeatures; i++) {
-    const row = featureRowsByCol.map(features => {
-      // Always reference the actual element from the document
-      if (features[i]) return features[i];
-      // If missing, use empty string for that cell
-      return '';
-    });
-    tableCells.push(row);
-  }
-
-  // Create and replace the block table
-  const table = WebImporter.DOMUtils.createTable(tableCells, document);
-  element.replaceWith(table);
+  // Final table: header row (block name), then one row of N columns
+  const tableData = [headerRow, cells];
+  const block = WebImporter.DOMUtils.createTable(tableData, document);
+  element.replaceWith(block);
 }

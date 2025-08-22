@@ -1,0 +1,645 @@
+{
+  "originUrl": "https://www.apple.com",
+  "aborted": false,
+  "lastCrawled": "https://www.apple.com/ipad/",
+  "urls": [
+    {
+      "url": "https://www.apple.com/ae-ar/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/ae-ar/ipad",
+      "id": "01fb51892c915c66bbd764840dce0b094325fc72"
+    },
+    {
+      "url": "https://www.apple.com/ae/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/ae/ipad",
+      "id": "46aafcc59ed81fbca233f46d731ec3bfe4abc228"
+    },
+    {
+      "url": "https://www.apple.com/am/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/am/ipad",
+      "id": "8c554e8799487637f98db8545ac3eb864c7cd825"
+    },
+    {
+      "url": "https://www.apple.com/at/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/at/ipad",
+      "id": "9a68f8ed6e91cf175ad96070d674884b29166074"
+    },
+    {
+      "url": "https://www.apple.com/au/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/au/ipad",
+      "id": "2af49d5747bb8f75401447ac4691ee7f09ec9e74"
+    },
+    {
+      "url": "https://www.apple.com/az/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/az/ipad",
+      "id": "d5b5c5d8e52f1cfbbc7b820b20fddce23c0a39d8"
+    },
+    {
+      "url": "https://www.apple.com/befr/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/befr/ipad",
+      "id": "e42695db6a335e1f7a08b171214c8d8e39fa4cc5"
+    },
+    {
+      "url": "https://www.apple.com/benl/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/benl/ipad",
+      "id": "7921df489d15f62a33db7476f0d1e9caaedd4aed"
+    },
+    {
+      "url": "https://www.apple.com/bg/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/bg/ipad",
+      "id": "03226791c15b86365df0df9d23b37c9a66615b2d"
+    },
+    {
+      "url": "https://www.apple.com/bh-ar/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/bh-ar/ipad",
+      "id": "855c09b5fb051507ed4d01e29800d18e675f9d23"
+    },
+    {
+      "url": "https://www.apple.com/bh/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/bh/ipad",
+      "id": "8b84d06c16b4974d7c508afe6e8e8024dce04248"
+    },
+    {
+      "url": "https://www.apple.com/br/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/br/ipad",
+      "id": "07daaa5eebfdd39c110fde5c04a5dfe7010b4e17"
+    },
+    {
+      "url": "https://www.apple.com/bw/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/bw/ipad",
+      "id": "895b8c395c666d9d3f87e38c21c69ea162b3b563"
+    },
+    {
+      "url": "https://www.apple.com/ca/fr/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/ca/fr/ipad",
+      "id": "53b2b0a685243d2182a0c974bb11b0644dc8dd95"
+    },
+    {
+      "url": "https://www.apple.com/ca/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/ca/ipad",
+      "id": "0f8b5c16b52ad6dface8994dbc2f44f7e37cb5d4"
+    },
+    {
+      "url": "https://www.apple.com/cf/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/cf/ipad",
+      "id": "f4babbe1f114d6322de3c256085de3ed9d0708a5"
+    },
+    {
+      "url": "https://www.apple.com/chde/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/chde/ipad",
+      "id": "34bb41d3562c563f12c9b05275e00d4e9788dd99"
+    },
+    {
+      "url": "https://www.apple.com/chfr/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/chfr/ipad",
+      "id": "e259821ea95d18b7e2e9eedced588396b7b3b61a"
+    },
+    {
+      "url": "https://www.apple.com/ci/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/ci/ipad",
+      "id": "800d432b1dfc7fa71ad6bd3683f7f27433bae701"
+    },
+    {
+      "url": "https://www.apple.com/cl/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/cl/ipad",
+      "id": "5606bb4bda244f31afdd96e830520977ddaab2b1"
+    },
+    {
+      "url": "https://www.apple.com/cm/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/cm/ipad",
+      "id": "9c722c7ecc415219318660e5079f891bfe13c85c"
+    },
+    {
+      "url": "https://www.apple.com/co/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/co/ipad",
+      "id": "43101bf68f154e07ebdcb89aa86b2f680db38d5c"
+    },
+    {
+      "url": "https://www.apple.com/cz/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/cz/ipad",
+      "id": "eca60c0d468030f8b1ae4f68244feb34c3f9e017"
+    },
+    {
+      "url": "https://www.apple.com/de/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/de/ipad",
+      "id": "b6b60fd6cbed775bb0fe8c5a86e60d663a23eff7"
+    },
+    {
+      "url": "https://www.apple.com/dk/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/dk/ipad",
+      "id": "05c48ce9cbfc643d76346000f0dcd46a8818934b"
+    },
+    {
+      "url": "https://www.apple.com/ee/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/ee/ipad",
+      "id": "c2aa545fb4e75c360c563caf59c314d81fc96392"
+    },
+    {
+      "url": "https://www.apple.com/eg-ar/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/eg-ar/ipad",
+      "id": "573a6039162c349fa34c1a5334aaba407bb1b726"
+    },
+    {
+      "url": "https://www.apple.com/eg/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/eg/ipad",
+      "id": "b144e28b9f9330a4f44706fc36fd424f3dd939bd"
+    },
+    {
+      "url": "https://www.apple.com/es/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/es/ipad",
+      "id": "016d24339998b31bca43096108c04f7babd497a4"
+    },
+    {
+      "url": "https://www.apple.com/fi/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/fi/ipad",
+      "id": "cff167541e721c8cb9cc8615365a41d2222f1818"
+    },
+    {
+      "url": "https://www.apple.com/fr/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/fr/ipad",
+      "id": "a6d4679502cc8158c6cfe1f85ccb29431be2d21f"
+    },
+    {
+      "url": "https://www.apple.com/ge/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/ge/ipad",
+      "id": "ccc749cb4bac45293f8a704f2ff54581f91be1b9"
+    },
+    {
+      "url": "https://www.apple.com/gn/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/gn/ipad",
+      "id": "992d06178694881f0ca32ed49e45fb6e1471c0f5"
+    },
+    {
+      "url": "https://www.apple.com/gq/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/gq/ipad",
+      "id": "059a2e97cccc53ee44aea9b974734f884add0c8a"
+    },
+    {
+      "url": "https://www.apple.com/gr/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/gr/ipad",
+      "id": "0e0e7fcfc6813636e592fd64eff9c49dbe98d4fd"
+    },
+    {
+      "url": "https://www.apple.com/gw/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/gw/ipad",
+      "id": "edbe77343bca5ededb954b6d55f26fe8a76f4cea"
+    },
+    {
+      "url": "https://www.apple.com/hk/en/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/hk/en/ipad",
+      "id": "adcf436ec925f63c38c54f02303c6bc352d3bbb6"
+    },
+    {
+      "url": "https://www.apple.com/hk/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/hk/ipad",
+      "id": "657d614db73bdfc98b9ff7c1c6c4db0334895afd"
+    },
+    {
+      "url": "https://www.apple.com/hr/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/hr/ipad",
+      "id": "0212ee84bc94ceaef5a5b1facd6e599e8592cf13"
+    },
+    {
+      "url": "https://www.apple.com/hu/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/hu/ipad",
+      "id": "6bd11cdd6deab9e1e4c956d85e04a83877f55d6a"
+    },
+    {
+      "url": "https://www.apple.com/id/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/id/ipad",
+      "id": "ca4f06b102443ecab7cd3af0d71621d4892c0f55"
+    },
+    {
+      "url": "https://www.apple.com/ie/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/ie/ipad",
+      "id": "b6c9544170741020cdd90e746a025171fb7d6414"
+    },
+    {
+      "url": "https://www.apple.com/il/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/il/ipad",
+      "id": "f39b567ba4f357372336464dee8a48793a7503bc"
+    },
+    {
+      "url": "https://www.apple.com/in/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/in/ipad",
+      "id": "48936570a34ff02548aac90c77bddaba776caa1f"
+    },
+    {
+      "url": "https://www.apple.com/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/ipad",
+      "id": "ec28ae054076dfa17807d8f1f0b89c5694164e1d"
+    },
+    {
+      "url": "https://www.apple.com/it/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/it/ipad",
+      "id": "1b4218a1b96127ee0b84c7653501f4d8cec057fa"
+    },
+    {
+      "url": "https://www.apple.com/jo-ar/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/jo-ar/ipad",
+      "id": "eb20590d5dff48ea24741fc6491c3e2f7fb644a3"
+    },
+    {
+      "url": "https://www.apple.com/jo/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/jo/ipad",
+      "id": "cd31bedccf64cd3cd60a4ea97d7b82cc626b7a3f"
+    },
+    {
+      "url": "https://www.apple.com/jp/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/jp/ipad",
+      "id": "978450d1c492477ec25dd05c11ff8b7cc557960b"
+    },
+    {
+      "url": "https://www.apple.com/ke/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/ke/ipad",
+      "id": "56abd898d838586a5316905d43daad7e2b7218f6"
+    },
+    {
+      "url": "https://www.apple.com/kg/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/kg/ipad",
+      "id": "37b87ac91a72f700346096a819ef8c41aca2a9e3"
+    },
+    {
+      "url": "https://www.apple.com/kr/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/kr/ipad",
+      "id": "44ee6900cb582d17bb8c04b200fc9377398b88e2"
+    },
+    {
+      "url": "https://www.apple.com/kw-ar/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/kw-ar/ipad",
+      "id": "d794854c4cdbdcc5c1e2d241e9ab46c1782c9f3f"
+    },
+    {
+      "url": "https://www.apple.com/kw/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/kw/ipad",
+      "id": "ec9a8bd53c08e830d9992e0c0e064b9887c58d2c"
+    },
+    {
+      "url": "https://www.apple.com/kz/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/kz/ipad",
+      "id": "243604c318d1771b420250c6866f034e3ea7fa57"
+    },
+    {
+      "url": "https://www.apple.com/la/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/la/ipad",
+      "id": "c0c445e9af8faf831e388f26d99e8bea8d1cbd4c"
+    },
+    {
+      "url": "https://www.apple.com/lae/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/lae/ipad",
+      "id": "b19aa88704f224cee28fdf8c3e23ae71bfb6a0d9"
+    },
+    {
+      "url": "https://www.apple.com/li/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/li/ipad",
+      "id": "a509e74b0877ca05871cb8fe801b46439e9efa7e"
+    },
+    {
+      "url": "https://www.apple.com/lt/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/lt/ipad",
+      "id": "6267437fccd168285cb4e872a13f854b466908db"
+    },
+    {
+      "url": "https://www.apple.com/lu/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/lu/ipad",
+      "id": "b4dfb8beb55a23a5834f123a01877e3b134c98a1"
+    },
+    {
+      "url": "https://www.apple.com/lv/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/lv/ipad",
+      "id": "5a8ace2753f29cc7c9ea3cac18fb9754af9ce22c"
+    },
+    {
+      "url": "https://www.apple.com/ma/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/ma/ipad",
+      "id": "a16e90500d042f042293946831b8ac5fc1b182a4"
+    },
+    {
+      "url": "https://www.apple.com/md/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/md/ipad",
+      "id": "c65d44dde51818fa5d9b14579d06e82ec523ba78"
+    },
+    {
+      "url": "https://www.apple.com/me/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/me/ipad",
+      "id": "fda77134b5a014fdffc78608e28124fc38ed1c84"
+    },
+    {
+      "url": "https://www.apple.com/mg/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/mg/ipad",
+      "id": "cfce3696e852a6b3b8c3c4250ed4df0f9148d157"
+    },
+    {
+      "url": "https://www.apple.com/mk/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/mk/ipad",
+      "id": "60d206c66e466ee4a193a6098bdecc260704604d"
+    },
+    {
+      "url": "https://www.apple.com/ml/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/ml/ipad",
+      "id": "d9e700c75bdcdb2289c4f8e99ded73f128f71d82"
+    },
+    {
+      "url": "https://www.apple.com/mo/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/mo/ipad",
+      "id": "d1a9e2f07068b00a4ff77d20c73f16689e399965"
+    },
+    {
+      "url": "https://www.apple.com/mt/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/mt/ipad",
+      "id": "d3065b7e76d61e69f1efd53f9ea4e56a38d0ca84"
+    },
+    {
+      "url": "https://www.apple.com/mx/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/mx/ipad",
+      "id": "9a4e799c9fc82f421b54841014b8c96e5fb601ee"
+    },
+    {
+      "url": "https://www.apple.com/my/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/my/ipad",
+      "id": "1b0e60bf6df7c6175c325f50f15d4a8fb6bc4324"
+    },
+    {
+      "url": "https://www.apple.com/mz/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/mz/ipad",
+      "id": "9e2e5ef6c87a1efcaa2146e572d3d884f6e6adc0"
+    },
+    {
+      "url": "https://www.apple.com/ne/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/ne/ipad",
+      "id": "2918715327c021976e1bed4d784bf6d953a42413"
+    },
+    {
+      "url": "https://www.apple.com/nl/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/nl/ipad",
+      "id": "085ce3b49fbe39e3048504f1cdc2259dd369f8d8"
+    },
+    {
+      "url": "https://www.apple.com/no/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/no/ipad",
+      "id": "36df084ffeb11f3db823c0f19107cb8f24f8ab8a"
+    },
+    {
+      "url": "https://www.apple.com/nz/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/nz/ipad",
+      "id": "4814999d5865a57818b4102be0febf59e4a95c19"
+    },
+    {
+      "url": "https://www.apple.com/om-ar/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/om-ar/ipad",
+      "id": "02c924660e24d978b7aaf41da346196bd9d7f6b2"
+    },
+    {
+      "url": "https://www.apple.com/om/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/om/ipad",
+      "id": "2f5f29a4e88bb8fcc4e8cfdc0243d93e7f0c775a"
+    },
+    {
+      "url": "https://www.apple.com/ph/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/ph/ipad",
+      "id": "3e81921fb1fd7cab190ebf6def627cfe248fbd1d"
+    },
+    {
+      "url": "https://www.apple.com/pl/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/pl/ipad",
+      "id": "b9c7ba51021c3d70c9e62837022f652c4e7a8e7d"
+    },
+    {
+      "url": "https://www.apple.com/pt/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/pt/ipad",
+      "id": "37eebba0d66adca7555de18a6165d22f6c8446d5"
+    },
+    {
+      "url": "https://www.apple.com/qa-ar/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/qa-ar/ipad",
+      "id": "9e256f94fd5f8f1f3b37c67ee22f83c957cf9561"
+    },
+    {
+      "url": "https://www.apple.com/qa/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/qa/ipad",
+      "id": "9e094583b370c5538e1e6c9c9af0278312d73505"
+    },
+    {
+      "url": "https://www.apple.com/ro/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/ro/ipad",
+      "id": "dbce2cf2d7ed83628022465f9c7fce16535a6e47"
+    },
+    {
+      "url": "https://www.apple.com/sa-ar/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/sa-ar/ipad",
+      "id": "45b3aad2e0e366f555ebb51d3d6e9f2de676cda5"
+    },
+    {
+      "url": "https://www.apple.com/sa/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/sa/ipad",
+      "id": "9b3cc6c936bfab37c0709d1c729ad62053090f6c"
+    },
+    {
+      "url": "https://www.apple.com/se/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/se/ipad",
+      "id": "88bf393a6ac7061a1ca2aea703b0d0cb0dfe036b"
+    },
+    {
+      "url": "https://www.apple.com/sg/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/sg/ipad",
+      "id": "92863cb550a06b23c4583d8b4cfc2f33c5c0cc89"
+    },
+    {
+      "url": "https://www.apple.com/si/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/si/ipad",
+      "id": "bb224230b178996163db96b6e9e4f6626dafcd96"
+    },
+    {
+      "url": "https://www.apple.com/sk/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/sk/ipad",
+      "id": "dd7b7d74a5a633477dc968873b48e907739dfb49"
+    },
+    {
+      "url": "https://www.apple.com/sn/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/sn/ipad",
+      "id": "15d45ed48e0b9fe223763971692a467570ce9067"
+    },
+    {
+      "url": "https://www.apple.com/th/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/th/ipad",
+      "id": "4037899787b28d0876e329dc99317c210341462b"
+    },
+    {
+      "url": "https://www.apple.com/tj/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/tj/ipad",
+      "id": "04049742bcc52f5ab69485c5bb713d17e254a5aa"
+    },
+    {
+      "url": "https://www.apple.com/tm/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/tm/ipad",
+      "id": "afd57e7dbc7c7869be23a7295f58d699a96f52c6"
+    },
+    {
+      "url": "https://www.apple.com/tn/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/tn/ipad",
+      "id": "8e1cc6db8af47ee6f163fac7d2606c883c1c9c62"
+    },
+    {
+      "url": "https://www.apple.com/tr/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/tr/ipad",
+      "id": "3b2192a4b75e3f94b7616a0856765128ccb9731d"
+    },
+    {
+      "url": "https://www.apple.com/tw/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/tw/ipad",
+      "id": "75d9e4abacec97e04c6545202d65f96a9cab5291"
+    },
+    {
+      "url": "https://www.apple.com/ua/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/ua/ipad",
+      "id": "f2af8045a710bfca3fcff7d94b33b8c3323c6635"
+    },
+    {
+      "url": "https://www.apple.com/ug/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/ug/ipad",
+      "id": "0b20bb68d8d92d7cf173a1d949e66f912314d60b"
+    },
+    {
+      "url": "https://www.apple.com/uk/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/uk/ipad",
+      "id": "4b7d2ef94a4023b85a6b2ad590e1b6a4a4c526d8"
+    },
+    {
+      "url": "https://www.apple.com/uz/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/uz/ipad",
+      "id": "06746a93586d4b66b785a0b0c00ec13f3ea589ff"
+    },
+    {
+      "url": "https://www.apple.com/vn/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/vn/ipad",
+      "id": "a45c5906dbbbbc45124879e3e295b8693f83ca45"
+    },
+    {
+      "url": "https://www.apple.com/za/ipad/",
+      "source": "CRAWL",
+      "targetPath": "/za/ipad",
+      "id": "a150724e38f15bb5b551fd53a94d189636a9f53b"
+    }
+  ],
+  "crawlOptions": {
+    "timeout": 64800000,
+    "inclusionPatterns": [],
+    "exclusionPatterns": [],
+    "limit": 100,
+    "sameDomain": true,
+    "keepHash": false,
+    "strategy": "crawl",
+    "logger": {},
+    "strategiesAttempted": [
+      "SITEMAPS",
+      "CRAWL"
+    ]
+  },
+  "extractionErrors": [
+    {
+      "url": "https://www.apple.com/by/ipad/",
+      "status": "301 Moved Permanently Redirect: https://support.apple.com/en-by/ipad"
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 .table.block {
   width: 100%;
   overflow-x: auto;
@@ -50,18 +51,98 @@
   margin-top: 0.25em;
 }
 
-/* no header variant */
 .table.block.no-header table tbody tr {
   border-top: 1px solid;
 }
 
-/* striped variant */
-.table.block.striped tbody tr:nth-child(odd) {
-  background-color: var(--overlay-background-color);
-}
-
-/* bordered variant */
 .table.block.bordered table th,
 .table.block.bordered table td {
   border: 1px solid;
+}
+
+
+/* Remove unwanted top and bottom borders that appear from default table styles */
+.table.striped table,
+.table.striped thead,
+.table.striped tbody,
+.table.striped tr,
+.table.striped thead tr,
+.table.striped tbody tr {
+  border: none;
+  border-top: none;
+  border-bottom: none;
+  background: transparent;
+}
+
+/* Remove any cell borders */
+.table.striped th,
+.table.striped td {
+  border: none;
+}
+
+/* Right-align nav icons and visually push them to the bottom right of the block */
+.table.striped th {
+  text-align: right;
+  padding: 0 40px 32px 0;
+  vertical-align: bottom;
+  background: transparent;
+  height: 100px;
+}
+
+/* Nav icons (chevrons) remain in a row and are right-aligned */
+.table.striped th ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 32px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  min-height: 40px;
+}
+
+/* Style each icon as a circle with background and subtle shadow */
+.table.striped th ul li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+}
+
+.table.striped th ul li img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #F2F2F5;
+  box-shadow: 0 1px 4px rgb(60 60 67 / 10%);
+  display: block;
+  padding: 4px;
+  box-sizing: border-box;
+  transition: box-shadow 0.15s;
+}
+
+/* Subtle hover effect for navigation icons */
+.table.striped th ul li img:hover {
+  box-shadow: 0 2px 8px rgb(60 60 67 / 18%);
+  background: #E9E9ED;
+}
+
+/* Responsive: Adjust gap, icon size, and padding for small screens */
+@media (width <= 600px) {
+  .table.striped th {
+    padding: 0 12px 16px 0;
+    height: 64px;
+  }
+
+  .table.striped th ul {
+    gap: 18px;
+    min-height: 28px;
+  }
+
+  .table.striped th ul li img {
+    width: 24px;
+    height: 24px;
+    padding: 2px;
+  }
 }

@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 .cards > ul {
   list-style: none;
   margin: 0;
@@ -39,7 +40,6 @@
   scrollbar-color: #333 #101010;
 }
 
-/* Card styling */
 .cards.cards3 > ul > li {
   display: flex;
   flex-direction: column;
@@ -59,7 +59,6 @@
   transition: box-shadow 0.15s, transform 0.15s;
 }
 
-/* Push content toward bottom, with generous bottom padding */
 .cards.cards3 .cards-card-body {
   flex: 1 1 auto;
   width: 100%;
@@ -72,7 +71,6 @@
   min-height: 0;
 }
 
-/* Typography */
 .cards.cards3 .cards-card-body p {
   text-align: left;
   color: #fff;
@@ -99,7 +97,6 @@
   margin-bottom: 0;
 }
 
-/* Responsive adjustments */
 @media (width <= 1024px) {
   .cards.cards3 > ul > li {
     flex: 0 0 270px;
@@ -130,4 +127,160 @@
   .cards.cards3 .cards-card-body {
     padding: 0 6vw 24px;
   }
+}
+
+
+.cards.cards13 {
+  background: #F5F5F7;
+  padding: 40px 32px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Use flexbox for horizontal row, allow wrapping to keep all cards visible */
+.cards.cards13 > ul {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 24px;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  justify-content: flex-start;
+  align-items: flex-start;
+  max-width: 100%;
+}
+
+@media (width <= 1200px) {
+  .cards.cards13 > ul {
+    justify-content: center;
+  }
+}
+
+/* Card styling */
+.cards.cards13 > ul > li {
+  background: #fff;
+  border: none;
+  border-radius: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  width: 288px;
+  min-width: 288px;
+  max-width: 288px;
+  padding: 28px 20px 22px;
+  position: relative;
+  margin: 0;
+  transition: box-shadow 0.2s;
+}
+
+/* Responsive: make cards full-width on mobile and reduce padding */
+@media (width <= 900px) {
+  .cards.cards13 {
+    padding: 24px 8px;
+  }
+
+  .cards.cards13 > ul {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .cards.cards13 > ul > li {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    padding: 20px 10px 16px 14px;
+  }
+}
+
+/* Top icon, left aligned */
+.cards.cards13 .cards-card-image {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: 14px;
+  min-height: 32px;
+  line-height: 0;
+}
+
+.cards.cards13 .cards-card-image img,
+.cards.cards13 .cards-card-image picture {
+  width: 32px;
+  height: 32px;
+  max-width: 32px;
+  max-height: 32px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Card body text */
+.cards.cards13 .cards-card-body {
+  padding: 0;
+  margin: 0;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Headline styling */
+.cards.cards13 .cards-card-body h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #121212;
+  margin: 0 0 8px;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+/* Paragraph styling */
+.cards.cards13 .cards-card-body p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #6e6e73;
+  margin: 0 0 8px;
+  line-height: 1.5;
+}
+
+/* Arrow icon/button in bottom right */
+.cards.cards13 .cards-card-body p:last-child {
+  position: absolute;
+  bottom: 14px;
+  right: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+.cards.cards13 .cards-card-body p:last-child a,
+.cards.cards13 .cards-card-body p:last-child img {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icon button style, match apple's small subtle look */
+.cards.cards13 .cards-card-body p:last-child img {
+  background: #F5F5F7;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  padding: 1.5px;
+  box-sizing: border-box;
+  transition: background 0.2s;
+}
+
+/* Hide extra link text after arrow */
+.cards.cards13 .cards-card-body p:last-child a {
+  font-size: 0;
+}
+
+.cards.cards13 .cards-card-body p:last-child a img {
+  font-size: 16px;
+}
+
+/* Remove blue link color for arrow links */
+.cards.cards13 .cards-card-body p:last-child a:any-link {
+  color: inherit;
 }

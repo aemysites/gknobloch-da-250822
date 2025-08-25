@@ -137,7 +137,6 @@
   width: 100%;
 }
 
-/* Use flexbox for horizontal row, allow wrapping to keep all cards visible */
 .cards.cards13 > ul {
   display: flex;
   flex-flow: row nowrap;
@@ -156,7 +155,6 @@
   }
 }
 
-/* Card styling */
 .cards.cards13 > ul > li {
   background: #fff;
   border: none;
@@ -175,7 +173,6 @@
   transition: box-shadow 0.2s;
 }
 
-/* Responsive: make cards full-width on mobile and reduce padding */
 @media (width <= 900px) {
   .cards.cards13 {
     padding: 24px 8px;
@@ -195,7 +192,6 @@
   }
 }
 
-/* Top icon, left aligned */
 .cards.cards13 .cards-card-image {
   display: flex;
   align-items: flex-start;
@@ -215,7 +211,6 @@
   display: block;
 }
 
-/* Card body text */
 .cards.cards13 .cards-card-body {
   padding: 0;
   margin: 0;
@@ -225,7 +220,6 @@
   justify-content: flex-start;
 }
 
-/* Headline styling */
 .cards.cards13 .cards-card-body h3 {
   font-size: 20px;
   font-weight: 700;
@@ -235,7 +229,6 @@
   letter-spacing: 0;
 }
 
-/* Paragraph styling */
 .cards.cards13 .cards-card-body p {
   font-size: 16px;
   font-weight: 400;
@@ -244,7 +237,6 @@
   line-height: 1.5;
 }
 
-/* Arrow icon/button in bottom right */
 .cards.cards13 .cards-card-body p:last-child {
   position: absolute;
   bottom: 14px;
@@ -260,7 +252,6 @@
   justify-content: center;
 }
 
-/* Icon button style, match apple's small subtle look */
 .cards.cards13 .cards-card-body p:last-child img {
   background: #F5F5F7;
   border-radius: 50%;
@@ -271,7 +262,6 @@
   transition: background 0.2s;
 }
 
-/* Hide extra link text after arrow */
 .cards.cards13 .cards-card-body p:last-child a {
   font-size: 0;
 }
@@ -280,7 +270,136 @@
   font-size: 16px;
 }
 
-/* Remove blue link color for arrow links */
 .cards.cards13 .cards-card-body p:last-child a:any-link {
   color: inherit;
+}
+
+
+.cards.cards10 {
+  background: #f5f6f7;
+  padding: 40px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Grid layout for cards: two columns side by side */
+.cards.cards10 > ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  justify-content: center;
+  align-items: start;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 950px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Card: flex container, image area at bottom, text at top */
+.cards.cards10 > ul > li {
+  background: #fff;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgb(60 60 67 / 7%);
+  min-width: 340px;
+  min-height: 410px;
+  box-sizing: border-box;
+  overflow: visible;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: stretch;
+}
+
+/* Image area (first .cards-card-body, now at bottom) */
+.cards.cards10 > ul > li > .cards-card-body:first-child {
+  height: 170px;
+  min-height: 140px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  background: none;
+
+  /* For debugging: Uncomment next line to see image area. Remove when adding image. */
+
+  /* background: rgba(0,0,0,0.02); */
+}
+
+/* Text area (second .cards-card-body, now at top) */
+.cards.cards10 > ul > li > .cards-card-body:last-child {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 32px 24px 0;
+  text-align: center;
+  min-height: 120px;
+  margin: 0;
+  flex: 0 0 auto;
+}
+
+/* Tighter margins between headline, subtitle, and button */
+.cards.cards10 > ul > li .cards-card-body h3 {
+  font-family: var(--heading-font-family);
+  font-size: 22px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin: 0 0 4px;
+  line-height: 1.22;
+}
+
+.cards.cards10 > ul > li .cards-card-body p {
+  font-size: 16px;
+  color: #6e6e73;
+  margin: 0 0 6px;
+}
+
+/* Button area */
+.cards.cards10 > ul > li .cards-card-body .button-container {
+  margin-top: 8px;
+}
+
+/* Button styled as a link */
+.cards.cards10 > ul > li .cards-card-body .button {
+  background: none;
+  border: none;
+  color: #0071e3;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 0;
+  padding: 0;
+  min-width: unset;
+  margin: 0;
+  box-shadow: none;
+  text-align: center;
+  line-height: 1.4;
+  display: inline;
+}
+
+.cards.cards10 > ul > li .cards-card-body .button:hover,
+.cards.cards10 > ul > li .cards-card-body .button:focus {
+  text-decoration: underline;
+  background: none;
+  color: #0071e3;
+}
+
+/* Responsive: stack cards vertically on small screens */
+@media (width <= 900px) {
+  .cards.cards10 > ul {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    max-width: 500px;
+  }
+
+  .cards.cards10 > ul > li {
+    min-width: 0;
+  }
+
+  .cards.cards10 > ul > li > .cards-card-body:last-child {
+    padding: 28px 12px 0;
+  }
 }
